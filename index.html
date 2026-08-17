@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suraj Prajapati — AI/ML Engineer & Python Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0a0a0a;--bg2:#111118;--card:#13131a;--card2:#16161f;
+      --border:#1e1e2e;--border2:#2a2a3a;
+      --text:#f0f0f5;--muted:#6b7280;--muted2:#4b5563;
+      --blue:#4f9cf9;--blue2:#3b82f6;--purple:#a855f7;
+      --cyan:#22d3ee;--green:#10b981;--orange:#f97316;
+      --font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden;line-height:1.6}
+    ::selection{background:rgba(79,156,249,0.2)}
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:var(--bg)}
+    ::-webkit-scrollbar-thumb{background:var(--blue);border-radius:2px}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+
+    /* ── TOP NAV ── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:200;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1rem 4%;
+      background:rgba(10,10,10,0.85);
+      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-logo{
+      width:42px;height:42px;border-radius:10px;
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+      display:flex;align-items:center;justify-content:center;
+      font-weight:800;font-size:1rem;color:#fff;letter-spacing:-0.02em;
+      cursor:pointer;flex-shrink:0;
+    }
+    .nav-right{display:flex;align-items:center;gap:1rem}
+    .nav-social{
+      width:36px;height:36px;border-radius:8px;
+      border:1px solid var(--border2);background:var(--card);
+      display:flex;align-items:center;justify-content:center;
+      color:var(--muted);cursor:pointer;transition:all .25s;
+    }
+    .nav-social:hover{color:var(--blue);border-color:var(--blue);background:rgba(79,156,249,0.08)}
+    .nav-social svg{width:16px;height:16px}
+
+    /* ── FLOATING PILL NAV ── */
+    #float-nav{
+      position:fixed;
+      top:1.2rem;
+      left:50%;
+      transform:translateX(-50%) translateY(-120px);
+      z-index:300;
+      background:rgba(15,15,20,0.92);
+      backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:50px;
+      padding:.55rem .75rem;
+      display:flex;align-items:center;gap:.25rem;
+      box-shadow:0 8px 32px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.05);
+      transition:transform .45s cubic-bezier(.34,1.56,.64,1), opacity .35s ease;
+      opacity:0;
+      white-space:nowrap;
+    }
+    #float-nav.visible{
+      transform:translateX(-50%) translateY(0);
+      opacity:1;
+    }
+    .fn-link{
+      padding:.45rem 1rem;border-radius:40px;
+      font-size:.82rem;font-weight:500;color:rgba(255,255,255,0.65);
+      cursor:pointer;transition:all .2s;letter-spacing:.01em;
+    }
+    .fn-link:hover{color:#fff;background:rgba(255,255,255,0.08)}
+    .fn-link.fn-active{color:#fff;background:rgba(255,255,255,0.1)}
+    .fn-cta{
+      padding:.45rem 1.1rem;border-radius:40px;
+      background:#fff;color:#0a0a0a;
+      font-size:.82rem;font-weight:700;
+      cursor:pointer;transition:all .2s;
+      margin-left:.1rem;
+    }
+    .fn-cta:hover{background:var(--blue);color:#fff;transform:scale(1.04)}
+
+    /* ── SECTIONS ── */
+    section{position:relative;padding:5rem 4%}
+    .section-heading{
+      font-size:clamp(2rem,5vw,3.8rem);font-weight:800;
+      line-height:1.1;letter-spacing:-0.03em;margin-bottom:3rem;
+    }
+    .section-heading .accent{color:var(--blue)}
+
+    /* ── HERO ── */
+    #hero{min-height:100vh;display:flex;align-items:center;padding-top:6rem;gap:4rem}
+    .hero-left{flex:1;min-width:0}
+    .hero-right{flex:1;min-width:0;max-width:580px}
+    .hero-name{
+      font-size:clamp(2.8rem,6vw,5rem);font-weight:800;
+      line-height:1.05;letter-spacing:-0.04em;color:var(--text);margin-bottom:1.25rem;
+    }
+    .hero-typed-line{
+      font-size:clamp(1.2rem,2.8vw,1.7rem);font-weight:600;color:var(--blue);
+      margin-bottom:1.5rem;min-height:2.2rem;font-family:var(--mono);
+    }
+    .typed-cursor{color:var(--blue)}
+    .hero-sub{font-size:1.05rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.7;max-width:540px}
+    .hero-sub .green{color:var(--green);font-weight:600}
+    .hero-sub .orange{color:var(--orange);font-weight:600}
+    .hero-bio{font-size:.92rem;line-height:1.7;color:var(--muted);max-width:520px;margin-bottom:2.25rem}
+    .hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-find{
+      display:inline-flex;align-items:center;
+      background:var(--text);color:var(--bg);font-weight:700;font-size:.85rem;
+      padding:.85rem 1.75rem;border-radius:50px;border:1px solid var(--text);
+      cursor:pointer;letter-spacing:.04em;transition:all .25s;white-space:nowrap;
+    }
+    .btn-find:hover{background:var(--blue);border-color:var(--blue);color:#fff;transform:scale(1.03)}
+    .btn-find-outline{background:transparent;color:var(--text);border:1px solid var(--border2)}
+    .btn-find-outline:hover{background:rgba(79,156,249,0.08);border-color:var(--blue);color:var(--blue);transform:scale(1.03)}
+
+    /* Code editor */
+    .code-editor{background:#1e1e2e;border-radius:14px;overflow:hidden;border:1px solid var(--border2);box-shadow:0 32px 80px rgba(0,0,0,0.6)}
+    .editor-titlebar{display:flex;align-items:center;gap:.5rem;padding:.75rem 1rem;background:#181825;border-bottom:1px solid #2a2a3a}
+    .dot{width:12px;height:12px;border-radius:50%}
+    .dot-red{background:#ff5f57}.dot-yellow{background:#febc2e}.dot-green{background:#28c840}
+    .editor-body{padding:1.5rem;font-family:var(--mono);font-size:.82rem;line-height:1.8;overflow:hidden}
+    .code-line{white-space:pre}
+    .kw{color:#cba6f7}.fn{color:#89b4fa}.str{color:#a6e3a1}.cm{color:#585b70;font-style:italic}
+    .var{color:#cdd6f4}.op{color:#89dceb}
+
+    /* ── BENTO ── */
+    #bento{padding:3rem 4%}
+    .bento-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:1.25rem}
+    .bento-card{
+      background:var(--card);border:1px solid var(--border);border-radius:16px;
+      padding:1.75rem;overflow:hidden;position:relative;display:flex;flex-direction:column;
+      transition:border-color .3s,transform .3s;
+    }
+    .bento-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+    .bento-large{grid-column:span 2;grid-row:span 2;padding:0}
+    .bento-half{grid-column:span 1;grid-row:span 1}
+    .bento-network{grid-column:span 4;grid-row:span 1;padding:0}
+    .bento-card h3{font-size:1.25rem;font-weight:700;line-height:1.3;margin-bottom:.5rem}
+    .bento-card p{color:var(--muted);font-size:.875rem;line-height:1.6}
+    .bento-eyebrow{font-size:.72rem;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;font-family:var(--mono);margin-bottom:.6rem}
+    .bento-text{margin-top:.5rem}
+    .bento-text-light{color:var(--muted);font-size:.85rem;margin-bottom:.35rem}
+    .bento-photo{position:relative}
+    .bento-photo-img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;filter:brightness(0.55) saturate(1.1)}
+    .bento-photo-overlay{position:relative;z-index:1;margin-top:auto;padding:1.75rem;background:linear-gradient(180deg,transparent,rgba(10,10,10,0.92) 70%)}
+    .bento-photo-overlay h3{color:#fff}
+    .bento-photo-overlay p{color:rgba(255,255,255,0.75);font-size:.85rem}
+    .bento-network .bento-photo-overlay{padding:1.5rem}
+    .bento-trainee{background:linear-gradient(135deg,#10193b,#0a0f24);border-color:#22305e;justify-content:center}
+    .bento-bio{background:var(--card2);justify-content:center}
+    .bento-tech-marquee{grid-column:span 2;grid-row:span 1;padding:1.75rem;display:flex;flex-direction:row;align-items:stretch;gap:1.5rem;background:var(--card2)}
+    .tech-marquee-text{flex:0 0 150px;display:flex;flex-direction:column;justify-content:center}
+    .tech-marquee-text h3{font-size:1.4rem}
+    .tech-marquee-cols{flex:1;display:flex;gap:.9rem;overflow:hidden;mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent)}
+    .marquee-col{flex:1;overflow:hidden;position:relative}
+    .marquee-track{display:flex;flex-direction:column;gap:.7rem;width:100%}
+    .marquee-up{animation:marquee-scroll-up 16s linear infinite}
+    .marquee-down{animation:marquee-scroll-down 16s linear infinite}
+    @keyframes marquee-scroll-up{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+    @keyframes marquee-scroll-down{0%{transform:translateY(-50%)}100%{transform:translateY(0)}}
+    .tech-marquee-cols .tech-pill{text-align:center;white-space:nowrap}
+    .tech-pill{padding:.5rem .9rem;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid var(--border2);font-size:.8rem;font-weight:500;color:var(--text);transition:all .25s}
+    .tech-pill:hover{background:rgba(79,156,249,0.12);border-color:var(--blue);color:var(--blue)}
+    .blog-label{font-size:.72rem;color:var(--blue);letter-spacing:.15em;text-transform:uppercase;font-family:var(--mono);margin-bottom:.5rem}
+
+    /* ── PROJECTS ── */
+    #projects{background:var(--bg)}
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .project-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .35s;cursor:pointer}
+    .project-card:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+
+    /* ── PROJECT PREVIEW — image-based ── */
+    .project-preview{
+      height:200px;
+      overflow:hidden;
+      position:relative;
+      border-bottom:1px solid var(--border);
+      background:var(--card2);
+    }
+    /* The actual screenshot */
+    .project-preview img.preview-screenshot{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:top center;
+      display:block;
+      transition:transform .45s ease;
+    }
+    .project-card:hover .project-preview img.preview-screenshot{
+      transform:scale(1.04) translateY(-2%);
+    }
+    /* Gradient overlay so the bottom doesn't hard-cut */
+    .project-preview::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,transparent 55%,rgba(10,10,10,0.55) 100%);
+      pointer-events:none;
+    }
+    /* Fallback shown when image is missing */
+    .preview-fallback{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:.75rem;
+      padding:1rem;
+    }
+    .preview-fallback .preview-title{
+      font-size:1rem;font-weight:700;color:#fff;
+      text-align:center;font-family:var(--mono);
+    }
+    .preview-fallback .preview-icons{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+    .preview-fallback .preview-icon{
+      width:36px;height:36px;border-radius:8px;background:#fff;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 2px 8px rgba(0,0,0,0.3);
+    }
+    .preview-fallback .preview-icon img{width:20px;height:20px;object-fit:contain}
+    .preview-fallback .project-preview-label{font-size:.75rem;color:rgba(255,255,255,0.5);font-family:var(--mono)}
+
+    /* per-card fallback gradients (used only when img missing) */
+    .preview-1{background:linear-gradient(135deg,#1a0a2e,#0f1535)}
+    .preview-2{background:linear-gradient(135deg,#0a1a2e,#0f2535)}
+    .preview-3{background:linear-gradient(135deg,#1a1a0a,#2a1a0f)}
+    .preview-4{background:linear-gradient(135deg,#1a0f0a,#2a150f)}
+    .preview-5{background:linear-gradient(135deg,#0a1a14,#0f2a1f)}
+    .preview-6{background:linear-gradient(135deg,#1a0a14,#2a0f2a)}
+    .preview-7{background:linear-gradient(135deg,#0a141a,#0f1f2a)}
+    .preview-8{background:linear-gradient(135deg,#141a0a,#1f2a0f)}
+    .preview-9{background:linear-gradient(135deg,#0a0a1a,#151530)}
+
+    .project-body{padding:1.5rem}
+    .project-title{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
+    .project-desc{color:var(--muted);font-size:.875rem;line-height:1.6;margin-bottom:1.25rem}
+    .project-tech-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+    .tech-icons-row{display:flex;gap:.4rem;flex-wrap:wrap}
+    .tech-icon-badge{
+      width:28px;height:28px;border-radius:6px;background:#fff;
+      border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;
+      transition:all .2s;
+    }
+    .tech-icon-badge img{width:16px;height:16px;object-fit:contain}
+    .tech-icon-badge:hover{border-color:var(--blue);transform:scale(1.12);box-shadow:0 0 8px rgba(79,156,249,0.3)}
+    .btn-check-site{
+      display:flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:600;color:var(--text);
+      padding:.45rem .9rem;border-radius:8px;border:1px solid var(--border2);background:var(--card2);
+      cursor:pointer;transition:all .25s;white-space:nowrap;text-decoration:none;
+    }
+    .btn-check-site:hover{background:var(--blue2);border-color:var(--blue2);color:#fff}
+    .btn-check-site svg{width:14px;height:14px}
+
+    /* ── TECH ROW ── */
+    #techrow{padding:4rem 4%;overflow:hidden}
+    .tech-icons-scroll{display:flex;align-items:center;gap:2.5rem;animation:scroll-row 26s linear infinite;width:max-content}
+    .tech-icons-scroll:hover{animation-play-state:paused}
+    .tech-icon-item{display:flex;flex-direction:column;align-items:center;gap:.5rem;flex-shrink:0;cursor:pointer;opacity:.75;transition:opacity .25s}
+    .tech-icon-item:hover{opacity:1}
+    .tech-icon-circle{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border2);background:#fff;transition:all .25s}
+    .tech-icon-circle img{width:32px;height:32px;object-fit:contain}
+    .tech-icon-item:hover .tech-icon-circle{border-color:var(--blue);box-shadow:0 0 16px rgba(79,156,249,0.3);transform:translateY(-3px)}
+    .tech-icon-name{font-size:.7rem;color:var(--muted);font-family:var(--mono)}
+    @keyframes scroll-row{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ── EXPERIENCE ── */
+    #experience{padding:5rem 4%}
+    .exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+    .exp-item{border-left:3px solid var(--blue2);padding-left:1.5rem;margin-bottom:2.5rem}
+    .exp-title{font-size:1.15rem;font-weight:700;margin-bottom:.25rem}
+    .exp-meta{font-size:.85rem;color:var(--muted);margin-bottom:.75rem;font-family:var(--mono)}
+    .exp-bullets{list-style:disc;padding-left:1.2rem}
+    .exp-bullets li{color:var(--muted);font-size:.875rem;line-height:1.7;margin-bottom:.35rem}
+    .exp-bullets li::marker{color:var(--blue)}
+    .exp-mockup{border-radius:14px;overflow:hidden;border:1px solid var(--border2);box-shadow:0 24px 60px rgba(0,0,0,0.5);background:var(--card)}
+    .mockup-bar{display:flex;align-items:center;gap:.5rem;padding:.65rem 1rem;background:#1e1e2e;border-bottom:1px solid var(--border2)}
+    .mockup-dot{width:10px;height:10px;border-radius:50%}
+    .mockup-url{flex:1;background:rgba(255,255,255,0.05);border-radius:4px;padding:.2rem .6rem;font-size:.7rem;color:var(--muted);font-family:var(--mono)}
+    .mockup-body{padding:1.5rem;min-height:200px}
+    .mockup-hero-text{font-size:1rem;font-weight:700;margin-bottom:.25rem}
+    .mockup-sub{font-size:.75rem;color:var(--muted);margin-bottom:1.25rem}
+    .mockup-form{display:flex;gap:.5rem;flex-wrap:wrap}
+    .mockup-input{flex:1;min-width:80px;padding:.4rem .7rem;border-radius:6px;border:1px solid var(--border2);background:rgba(255,255,255,0.04);font-size:.75rem;color:var(--muted);outline:none}
+    .mockup-btn{padding:.4rem .85rem;border-radius:6px;background:#ef4444;color:#fff;font-size:.75rem;font-weight:600;border:none;cursor:pointer}
+
+    /* ── ORBIT ── */
+    #orbit{padding:5rem 4%}
+    .orbit-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .orbit-wrap{position:relative;width:440px;height:440px;flex-shrink:0}
+    .orbit-ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.06);top:50%;left:50%;transform:translate(-50%,-50%)}
+    .orbit-ring-1{width:160px;height:160px}
+    .orbit-ring-2{width:270px;height:270px}
+    .orbit-ring-3{width:380px;height:380px}
+    .orbit-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;border-radius:16px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(79,156,249,0.4)}
+    .orbit-icon{position:absolute;width:42px;height:42px;border-radius:10px;background:#fff;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;top:50%;left:50%;animation:orbit-spin linear infinite;transform-origin:0 0;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+    .orbit-icon img{width:22px;height:22px;object-fit:contain}
+    .oi-1{animation-duration:10s;--r:80px;--start:0deg}
+    .oi-2{animation-duration:10s;--r:80px;--start:120deg}
+    .oi-3{animation-duration:10s;--r:80px;--start:240deg}
+    .om-1{animation-duration:16s;--r:135px;--start:0deg}
+    .om-2{animation-duration:16s;--r:135px;--start:60deg}
+    .om-3{animation-duration:16s;--r:135px;--start:120deg}
+    .om-4{animation-duration:16s;--r:135px;--start:180deg}
+    .om-5{animation-duration:16s;--r:135px;--start:240deg}
+    .om-6{animation-duration:16s;--r:135px;--start:300deg}
+    .oo-1{animation-duration:24s;--r:190px;--start:0deg}
+    .oo-2{animation-duration:24s;--r:190px;--start:45deg}
+    .oo-3{animation-duration:24s;--r:190px;--start:90deg}
+    .oo-4{animation-duration:24s;--r:190px;--start:135deg}
+    .oo-5{animation-duration:24s;--r:190px;--start:180deg}
+    .oo-6{animation-duration:24s;--r:190px;--start:225deg}
+    .oo-7{animation-duration:24s;--r:190px;--start:270deg}
+    .oo-8{animation-duration:24s;--r:190px;--start:315deg}
+    @keyframes orbit-spin{
+      from{transform:rotate(var(--start)) translateX(var(--r)) rotate(calc(-1 * var(--start))) translate(-50%,-50%)}
+      to{transform:rotate(calc(var(--start) + 360deg)) translateX(var(--r)) rotate(calc(-1 * (var(--start) + 360deg))) translate(-50%,-50%)}
+    }
+    .orbit-text h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1.75rem}
+    .orbit-text h2 .accent{color:var(--blue)}
+    .orbit-text p{color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:1.25rem}
+
+    /* ── CONTACT ── */
+    #contact{background:var(--bg)}
+    .contact-inner{max-width:600px;margin:0 auto;text-align:center}
+    .contact-inner .section-heading{margin-bottom:1rem}
+    .contact-sub{color:var(--muted);margin-bottom:3rem;font-size:.95rem}
+    .contact-form{background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:2.5rem;backdrop-filter:blur(10px);text-align:left}
+    .form-row{margin-bottom:1.5rem}
+    .form-row label{display:block;font-size:.75rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;transition:color .3s}
+    .form-row:focus-within label{color:var(--blue)}
+    .form-row input,.form-row textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid var(--border2);border-radius:10px;padding:.85rem 1.1rem;color:var(--text);font-family:var(--font);font-size:.9rem;outline:none;transition:border-color .3s,box-shadow .3s}
+    .form-row input:focus,.form-row textarea:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(59,130,246,0.1)}
+    .form-row textarea{resize:vertical;min-height:120px}
+    .form-row input::placeholder,.form-row textarea::placeholder{color:rgba(107,114,128,.5)}
+    .btn-submit{width:100%;padding:1rem;border-radius:10px;background:linear-gradient(135deg,var(--blue2),var(--purple));color:#fff;font-weight:700;font-size:.95rem;border:none;cursor:pointer;letter-spacing:.04em;font-family:var(--font);transition:all .3s}
+    .btn-submit:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 8px 32px rgba(59,130,246,.3)}
+    .btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+    .form-status{margin-top:1rem;text-align:center;font-size:.85rem;min-height:1.2rem;font-weight:500}
+    .form-status.success{color:var(--green)}
+    .form-status.error{color:#ef4444}
+
+    /* ── FOOTER ── */
+    footer{text-align:center;padding:2.5rem 4%;border-top:1px solid var(--border);color:var(--muted2);font-size:.8rem;font-family:var(--mono)}
+    footer span{color:var(--blue)}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px){
+      #hero{flex-direction:column;padding-top:7rem}
+      .hero-right{width:100%;max-width:100%}
+      .bento-grid{grid-template-columns:repeat(2,1fr)}
+      .bento-large{grid-column:span 2}
+      .bento-tech-marquee{grid-column:span 2}
+      .bento-network{grid-column:span 2}
+      .projects-grid{grid-template-columns:repeat(2,1fr)}
+      .exp-grid{grid-template-columns:1fr}
+      .orbit-grid{grid-template-columns:1fr}
+      .orbit-wrap{margin:0 auto}
+      #float-nav{display:none}
+    }
+    @media(max-width:640px){
+      section{padding:4rem 5%}
+      .bento-grid{grid-template-columns:1fr;grid-auto-rows:auto}
+      .bento-large,.bento-half,.bento-tech-marquee,.bento-network{grid-column:span 1;grid-row:span 1}
+      .bento-large{min-height:260px}
+      .bento-tech-marquee{flex-direction:column;min-height:240px}
+      .tech-marquee-text{flex:0 0 auto}
+      .projects-grid{grid-template-columns:1fr}
+      .orbit-wrap{width:300px;height:300px}
+      .orbit-ring-3{width:280px;height:280px}
+      .orbit-ring-2{width:196px;height:196px}
+      .oo-1,.oo-2,.oo-3,.oo-4,.oo-5,.oo-6,.oo-7,.oo-8{--r:140px}
+      .om-1,.om-2,.om-3,.om-4,.om-5,.om-6{--r:98px}
+      .oi-1,.oi-2,.oi-3{--r:58px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .tech-icons-scroll,.orbit-icon,.marquee-up,.marquee-down{animation:none}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ FLOATING PILL NAV ═══ -->
+<div id="float-nav">
+  <a href="#hero"     class="fn-link fn-active">Home</a>
+  <a href="#projects" class="fn-link">Projects</a>
+  <a href="#techrow"  class="fn-link">Skills</a>
+  <a href="#experience" class="fn-link">Experience</a>
+  <a href="#contact"  class="fn-cta">Contact</a>
+</div>
+
+<!-- ═══ TOP NAV ═══ -->
+<nav>
+  <div class="nav-logo">SP</div>
+  <div class="nav-right">
+    <a href="https://linkedin.com/in/surajprajapati662" target="_blank" rel="noopener" class="nav-social" title="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="https://github.com/suraj62838" target="_blank" rel="noopener" class="nav-social" title="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="https://instagram.com/" target="_blank" rel="noopener" class="nav-social" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="./SurajPrajapati.pdf" download="SurajPrajapati.pdf" class="nav-social" title="Download Resume">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-left">
+    <h1 class="hero-name">Suraj Prajapati</h1>
+    <div class="hero-typed-line"><span id="hero-typed"></span></div>
+    <p class="hero-sub">A motivated <span class="green">AI/ML</span> engineer and <span class="orange">Python developer</span>, blending machine learning expertise with practical software development to build intelligent, real-world solutions.</p>
+    <p class="hero-bio">BCA graduate with hands-on experience in Python, Machine Learning, and AI application development — skilled in FastAPI, Django, Scikit-Learn, TensorFlow, and building production-ready AI tools.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-find">View My Work</a>
+      <a href="#contact" class="btn-find btn-find-outline">Contact Me</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="code-editor">
+      <div class="editor-titlebar">
+        <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+      </div>
+      <div class="editor-body">
+        <div class="code-line"><span class="kw">const</span> <span class="var">engineer</span> <span class="op">=</span> <span class="fn">createAI</span>({</div>
+        <div class="code-line">  <span class="var">name</span>: <span class="str">"Suraj Prajapati"</span>,</div>
+        <div class="code-line">  <span class="var">role</span>: <span class="str">"AI/ML Engineer"</span>,</div>
+        <div class="code-line">  <span class="var">skills</span>: [</div>
+        <div class="code-line">    <span class="str">"Python"</span>, <span class="str">"TensorFlow"</span>,</div>
+        <div class="code-line">    <span class="str">"Transformers"</span>, <span class="str">"FastAPI"</span>,</div>
+        <div class="code-line">  ],</div>
+        <div class="code-line">  <span class="cm">// currently building →</span></div>
+        <div class="code-line">  <span class="var">projects</span>: [<span class="str">"HireMind"</span>,</div>
+        <div class="code-line">    <span class="str">"Nova-AI"</span>, <span class="str">"Orchestrator"</span>],</div>
+        <div class="code-line">  <span class="var">available</span>: <span class="kw">true</span>,</div>
+        <div class="code-line">});</div>
+        <div class="code-line"></div>
+        <div class="code-line"><span class="cm">// Let's build something great ✦</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BENTO ═══ -->
+<section id="bento">
+  <div class="bento-grid">
+    <div class="bento-card bento-large bento-photo">
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&q=80" alt="Coding workspace" class="bento-photo-img"/>
+      <div class="bento-photo-overlay">
+        <h3>Building AI tools that solve real recruitment & ML workflow problems</h3>
+        <p>Hands-on with FastAPI, Scikit-Learn & TensorFlow</p>
+      </div>
+    </div>
+    <div class="bento-card bento-trainee bento-half">
+      <p class="bento-eyebrow">Currently</p>
+      <h3>AI/ML Trainee at ASB Academy</h3>
+      <p class="bento-text">Training real-world ML/DL models, NLP pipelines, and deploying them via FastAPI — Jan 2026 to Present.</p>
+    </div>
+    <div class="bento-card bento-bio bento-half">
+      <h3>BCA graduate, AI/ML focused</h3>
+      <p class="bento-text">Hands-on experience in Python, Machine Learning, and AI application development — building intelligent, real-world solutions from the ground up.</p>
+    </div>
+    <div class="bento-card bento-tech-marquee">
+      <div class="tech-marquee-text">
+        <p class="bento-text-light">I constantly try to improve</p>
+        <h3>My tech stack</h3>
+      </div>
+      <div class="tech-marquee-cols">
+        <div class="marquee-col">
+          <div class="marquee-track marquee-up">
+            <span class="tech-pill">Python</span><span class="tech-pill">FastAPI</span>
+            <span class="tech-pill">TensorFlow</span><span class="tech-pill">Transformers</span>
+            <span class="tech-pill">SQL</span><span class="tech-pill">Django</span>
+            <span class="tech-pill">Python</span><span class="tech-pill">FastAPI</span>
+            <span class="tech-pill">TensorFlow</span><span class="tech-pill">Transformers</span>
+            <span class="tech-pill">SQL</span><span class="tech-pill">Django</span>
+          </div>
+        </div>
+        <div class="marquee-col">
+          <div class="marquee-track marquee-down">
+            <span class="tech-pill">Pandas</span><span class="tech-pill">NumPy</span>
+            <span class="tech-pill">Scikit-Learn</span><span class="tech-pill">Hugging Face</span>
+            <span class="tech-pill">NLP</span><span class="tech-pill">C++</span>
+            <span class="tech-pill">Pandas</span><span class="tech-pill">NumPy</span>
+            <span class="tech-pill">Scikit-Learn</span><span class="tech-pill">Hugging Face</span>
+            <span class="tech-pill">NLP</span><span class="tech-pill">C++</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bento-card bento-network">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80" alt="Global network" class="bento-photo-img"/>
+      <div class="bento-photo-overlay">
+        <div class="blog-label">The Inside Scoop</div>
+        <h3 style="font-size:1.1rem">Seeking an AI/ML Engineer or Python Developer role to apply ML skills on real-world projects.</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section id="projects">
+  <h2 class="section-heading">A small selection of <span class="accent">recent projects</span></h2>
+  <div class="projects-grid">
+
+    <!-- ── PROJECT: Referro ──
+         📁 Save your screenshot as:  images/referro.png        -->
+    <div class="project-card" data-tilt data-tilt-max="6" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+      <div class="project-preview preview-6">
+        <img
+          class="preview-screenshot"
+          src="images/referro.png"
+          alt="Referro screenshot"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <div class="preview-fallback" style="display:none">
+          <div class="preview-title">Referro</div>
+          <div class="preview-icons">
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/nextdotjs/ffffff" alt="Next.js"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/django/092E20" alt="Django"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="PostgreSQL"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/redis/DC382D" alt="Redis"/></div>
+          </div>
+          <span class="project-preview-label">Job Referral Platform</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Referro — Job Referral Platform</h3>
+        <p class="project-desc">A full-stack platform connecting job seekers with employees who can provide referrals — helping users discover opportunities, manage referral requests, and streamline the entire referral process from one place.</p>
+        <div class="project-tech-row">
+          <div class="tech-icons-row">
+            <div class="tech-icon-badge" title="Next.js"><img src="https://cdn.simpleicons.org/nextdotjs/ffffff" alt="Next.js"/></div>
+            <div class="tech-icon-badge" title="TypeScript"><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="TypeScript"/></div>
+            <div class="tech-icon-badge" title="Django REST Framework"><img src="https://cdn.simpleicons.org/django/092E20" alt="Django"/></div>
+            <div class="tech-icon-badge" title="PostgreSQL"><img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="PostgreSQL"/></div>
+            <div class="tech-icon-badge" title="Redis / Celery"><img src="https://cdn.simpleicons.org/redis/DC382D" alt="Redis"/></div>
+          </div>
+          <a href="https://referro-eosin.vercel.app/login" target="_blank" rel="noopener" class="btn-check-site">
+            Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJECT: Message Intelligence System ──
+         📁 Save your screenshot as:  images/message-intelligence.png -->
+    <div class="project-card" data-tilt data-tilt-max="6" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+      <div class="project-preview preview-7">
+        <img
+          class="preview-screenshot"
+          src="images/message-intelligence.png"
+          alt="Message Intelligence System screenshot"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <div class="preview-fallback" style="display:none">
+          <div class="preview-title">Message Intel</div>
+          <div class="preview-icons">
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/react/61DAFB" alt="React"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas"/></div>
+          </div>
+          <span class="project-preview-label">AI Message Processing</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Message Intelligence System</h3>
+        <p class="project-desc">An AI-powered system that analyzes large volumes of messages, classifies them by intent, extracts actionable tasks and events, and detects and masks sensitive information — turning unstructured chatter into structured, useful data.</p>
+        <div class="project-tech-row">
+          <div class="tech-icons-row">
+            <div class="tech-icon-badge" title="React / Next.js"><img src="https://cdn.simpleicons.org/react/61DAFB" alt="React"/></div>
+            <div class="tech-icon-badge" title="FastAPI"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"/></div>
+            <div class="tech-icon-badge" title="Tailwind CSS"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="Tailwind"/></div>
+            <div class="tech-icon-badge" title="Pandas"><img src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas"/></div>
+          </div>
+          <a href="https://message-intelligence-system.vercel.app/" target="_blank" rel="noopener" class="btn-check-site">
+            Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJECT: AI-MySQL-Assistant ──
+         📁 Save your screenshot as:  images/ai-mysql-assistant.png -->
+    <div class="project-card" data-tilt data-tilt-max="6" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+      <div class="project-preview preview-8">
+        <img
+          class="preview-screenshot"
+          src="images/ai-mysql-assistant.png"
+          alt="AI-MySQL-Assistant screenshot"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <div class="preview-fallback" style="display:none">
+          <div class="preview-title">AI-MySQL</div>
+          <div class="preview-icons">
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"/></div>
+          </div>
+          <span class="project-preview-label">Natural Language → SQL</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">AI-MySQL-Assistant</h3>
+        <p class="project-desc">An AI-powered MySQL assistant that lets users query databases in plain English — converting natural language into SQL, executing it against MySQL, and presenting the results in a clear, readable format.</p>
+        <div class="project-tech-row">
+          <div class="tech-icons-row">
+            <div class="tech-icon-badge" title="Python"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="tech-icon-badge" title="FastAPI"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"/></div>
+            <div class="tech-icon-badge" title="MySQL"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"/></div>
+            <div class="tech-icon-badge" title="Pandas"><img src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas"/></div>
+          </div>
+          <a href="https://github.com/suraj62838/AI-MySQL-Assistant" target="_blank" rel="noopener" class="btn-check-site">
+            GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJECT: RAG-Based AI Chatbot ──
+         📁 Save your screenshot as:  images/rag-chatbot.png     -->
+    <div class="project-card" data-tilt data-tilt-max="6" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+      <div class="project-preview preview-9">
+        <img
+          class="preview-screenshot"
+          src="images/rag-chatbot.png"
+          alt="RAG-Based AI Chatbot screenshot"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <div class="preview-fallback" style="display:none">
+          <div class="preview-title">RAG Chatbot</div>
+          <div class="preview-icons">
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/langchain/1C3C3C" alt="LangChain"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/streamlit/FF4B4B" alt="Streamlit"/></div>
+          </div>
+          <span class="project-preview-label">Retrieval-Augmented Generation</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">RAG-Based AI Chatbot</h3>
+        <p class="project-desc">A Retrieval-Augmented Generation chatbot that lets users ask questions about their own documents or knowledge base — retrieving relevant context and using an LLM to generate accurate, grounded answers.</p>
+        <div class="project-tech-row">
+          <div class="tech-icons-row">
+            <div class="tech-icon-badge" title="LangChain"><img src="https://cdn.simpleicons.org/langchain/1C3C3C" alt="LangChain"/></div>
+            <div class="tech-icon-badge" title="FastAPI"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"/></div>
+            <div class="tech-icon-badge" title="Streamlit"><img src="https://cdn.simpleicons.org/streamlit/FF4B4B" alt="Streamlit"/></div>
+            <div class="tech-icon-badge" title="Python"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+          </div>
+          <a href="https://github.com/suraj62838/-RAG-based-AI-Chatbot" target="_blank" rel="noopener" class="btn-check-site">
+            GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 1: HireMind ──
+         📁 Save your screenshot as:  images/hiremind.png
+         Then it will appear here automatically.                -->
+    <div class="project-card" data-tilt data-tilt-max="6" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+      <div class="project-preview preview-1">
+        <!-- 🖼️  REPLACE: put your HireMind screenshot at  images/hiremind.png -->
+        <img
+          class="preview-screenshot"
+          src="images/hiremind.png"
+          alt="HireMind screenshot"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <!-- Fallback shown if image is missing -->
+        <div class="preview-fallback" style="display:none">
+          <div class="preview-title">HireMind</div>
+          <div class="preview-icons">
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/huggingface/FFD21E" alt="Hugging Face"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Scikit-Learn"/></div>
+          </div>
+          <span class="project-preview-label">AI Recruitment Platform</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">HireMind — AI Hiring Platform</h3>
+        <p class="project-desc">AI-powered recruitment platform for resume analysis, scoring, and mock interviews using Python and FastAPI. Designed candidate evaluation workflows for automated assessment and feedback generation.</p>
+        <div class="project-tech-row">
+          <div class="tech-icons-row">
+            <div class="tech-icon-badge" title="Python"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="tech-icon-badge" title="FastAPI"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"/></div>
+            <div class="tech-icon-badge" title="Hugging Face"><img src="https://cdn.simpleicons.org/huggingface/FFD21E" alt="HF"/></div>
+            <div class="tech-icon-badge" title="Scikit-Learn"><img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="SKLearn"/></div>
+            <div class="tech-icon-badge" title="MySQL"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"/></div>
+          </div>
+          <a href="https://hiremind-ai-orpin.vercel.app/" target="_blank" rel="noopener" class="btn-check-site">
+            Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 2: Nova ──
+         📁 Save your screenshot as:  images/nova.png          -->
+    <div class="project-card" data-tilt data-tilt-max="6" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+      <div class="project-preview preview-2">
+        <!-- 🖼️  REPLACE: put your Nova screenshot at  images/nova.png -->
+        <img
+          class="preview-screenshot"
+          src="images/nova.png"
+          alt="Nova AI Voice Assistant screenshot"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <div class="preview-fallback" style="display:none">
+          <div class="preview-title">Nova</div>
+          <div class="preview-icons">
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/tensorflow/FF6F00" alt="TensorFlow"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/numpy/013243" alt="NumPy"/></div>
+          </div>
+          <span class="project-preview-label">AI Voice Assistant</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Nova — AI Voice Assistant</h3>
+        <p class="project-desc">AI-powered voice assistant built with Python, speech recognition, and text-to-speech. Supports web browsing, app launching, music playback, and intelligent response generation.</p>
+        <div class="project-tech-row">
+          <div class="tech-icons-row">
+            <div class="tech-icon-badge" title="Python"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="tech-icon-badge" title="TensorFlow"><img src="https://cdn.simpleicons.org/tensorflow/FF6F00" alt="TF"/></div>
+            <div class="tech-icon-badge" title="NumPy"><img src="https://cdn.simpleicons.org/numpy/013243" alt="NumPy"/></div>
+            <div class="tech-icon-badge" title="GitHub"><img src="https://cdn.simpleicons.org/github/000000" alt="GitHub"/></div>
+          </div>
+          <a href="https://github.com/suraj62838/Nova" target="_blank" rel="noopener" class="btn-check-site">
+            GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 3: ML Experiment Orchestrator ──
+         📁 Save your screenshot as:  images/orchestrator.png  -->
+    <div class="project-card" data-tilt data-tilt-max="6" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+      <div class="project-preview preview-3">
+        <!-- 🖼️  REPLACE: put your Orchestrator screenshot at  images/orchestrator.png -->
+        <img
+          class="preview-screenshot"
+          src="images/orchestrator.png"
+          alt="ML Experiment Orchestrator screenshot"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <div class="preview-fallback" style="display:none">
+          <div class="preview-title">Orchestrator</div>
+          <div class="preview-icons">
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="SKLearn"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"/></div>
+          </div>
+          <span class="project-preview-label">ML Lifecycle Automation</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">ML Experiment Orchestrator</h3>
+        <p class="project-desc">End-to-end ML lifecycle automation tool — streamlines experiment tracking, model training pipelines, hyperparameter tuning, and evaluation with full reproducibility via version control.</p>
+        <div class="project-tech-row">
+          <div class="tech-icons-row">
+            <div class="tech-icon-badge" title="Python"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="tech-icon-badge" title="Pandas"><img src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas"/></div>
+            <div class="tech-icon-badge" title="Scikit-Learn"><img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="SKLearn"/></div>
+            <div class="tech-icon-badge" title="NumPy"><img src="https://cdn.simpleicons.org/numpy/013243" alt="NumPy"/></div>
+            <div class="tech-icon-badge" title="MySQL"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"/></div>
+          </div>
+          <a href="https://github.com/suraj62838/ML-Experiment-Orchestrator" target="_blank" rel="noopener" class="btn-check-site">
+            GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 4: Food Ordering Website ──
+         📁 Save your screenshot as:  images/foodhub.png       -->
+    <div class="project-card" data-tilt data-tilt-max="6" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+      <div class="project-preview preview-4">
+        <!-- 🖼️  REPLACE: put your FoodHub screenshot at  images/foodhub.png -->
+        <img
+          class="preview-screenshot"
+          src="images/foodhub.png"
+          alt="Food Ordering Website screenshot"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <div class="preview-fallback" style="display:none">
+          <div class="preview-title">FoodHub</div>
+          <div class="preview-icons">
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/django/092E20" alt="Django"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="HTML5"/></div>
+          </div>
+          <span class="project-preview-label">Food Ordering Platform</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Food Ordering Website</h3>
+        <p class="project-desc">Full-stack food ordering platform with menu browsing, cart management, and order checkout — built with Django and MySQL with a clean, responsive UI for a smooth experience.</p>
+        <div class="project-tech-row">
+          <div class="tech-icons-row">
+            <div class="tech-icon-badge" title="Python"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="tech-icon-badge" title="Django"><img src="https://cdn.simpleicons.org/django/092E20" alt="Django"/></div>
+            <div class="tech-icon-badge" title="MySQL"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"/></div>
+            <div class="tech-icon-badge" title="HTML5"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="HTML"/></div>
+            <div class="tech-icon-badge" title="CSS3"><img src="https://cdn.simpleicons.org/css/1572B6" alt="CSS"/></div>
+          </div>
+          <a href="https://cozy-bunny-ee36b5.netlify.app/" target="_blank" rel="noopener" class="btn-check-site">
+            Live Site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 5: Todo Application ──
+         📁 Save your screenshot as:  images/taskflow.png      -->
+    <div class="project-card" data-tilt data-tilt-max="6" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+      <div class="project-preview preview-5">
+        <!-- 🖼️  REPLACE: put your TaskFlow screenshot at  images/taskflow.png -->
+        <img
+          class="preview-screenshot"
+          src="images/taskflow.png"
+          alt="Todo Application screenshot"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <div class="preview-fallback" style="display:none">
+          <div class="preview-title">TaskFlow</div>
+          <div class="preview-icons">
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="SQL"/></div>
+            <div class="preview-icon"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JS"/></div>
+          </div>
+          <span class="project-preview-label">Task Management App</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Todo Application</h3>
+        <p class="project-desc">Lightweight task management app for creating, organizing, and tracking daily to-dos — featuring persistent SQL storage, priority management, and a distraction-free interface.</p>
+        <div class="project-tech-row">
+          <div class="tech-icons-row">
+            <div class="tech-icon-badge" title="Python"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+            <div class="tech-icon-badge" title="FastAPI"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"/></div>
+            <div class="tech-icon-badge" title="MySQL"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"/></div>
+            <div class="tech-icon-badge" title="JavaScript"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JS"/></div>
+            <div class="tech-icon-badge" title="HTML5"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="HTML"/></div>
+          </div>
+          <a href="https://github.com/suraj62838" target="_blank" rel="noopener" class="btn-check-site">
+            GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ TECH ROW ═══ -->
+<section id="techrow">
+  <h2 class="section-heading" style="margin-bottom:2.5rem"><span class="accent">My</span> tech stack</h2>
+  <div style="overflow:hidden">
+    <div class="tech-icons-scroll">
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div><span class="tech-icon-name">Python</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="SQL"/></div><span class="tech-icon-name">SQL</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/c/A8B9CC" alt="C"/></div><span class="tech-icon-name">C</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/cplusplus/00599C" alt="C++"/></div><span class="tech-icon-name">C++</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"/></div><span class="tech-icon-name">FastAPI</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/django/092E20" alt="Django"/></div><span class="tech-icon-name">Django</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Scikit-Learn"/></div><span class="tech-icon-name">Scikit-Learn</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/tensorflow/FF6F00" alt="TensorFlow"/></div><span class="tech-icon-name">TensorFlow</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/huggingface/FFD21E" alt="Hugging Face"/></div><span class="tech-icon-name">Hugging Face</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas"/></div><span class="tech-icon-name">Pandas</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/numpy/013243" alt="NumPy"/></div><span class="tech-icon-name">NumPy</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/plotly/3F4F75" alt="Matplotlib"/></div><span class="tech-icon-name">Matplotlib</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"/></div><span class="tech-icon-name">MySQL</span></div>
+      <!-- duplicate set for seamless loop -->
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div><span class="tech-icon-name">Python</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="SQL"/></div><span class="tech-icon-name">SQL</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/c/A8B9CC" alt="C"/></div><span class="tech-icon-name">C</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/cplusplus/00599C" alt="C++"/></div><span class="tech-icon-name">C++</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"/></div><span class="tech-icon-name">FastAPI</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/django/092E20" alt="Django"/></div><span class="tech-icon-name">Django</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Scikit-Learn"/></div><span class="tech-icon-name">Scikit-Learn</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/tensorflow/FF6F00" alt="TensorFlow"/></div><span class="tech-icon-name">TensorFlow</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/huggingface/FFD21E" alt="Hugging Face"/></div><span class="tech-icon-name">Hugging Face</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas"/></div><span class="tech-icon-name">Pandas</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/numpy/013243" alt="NumPy"/></div><span class="tech-icon-name">NumPy</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/plotly/3F4F75" alt="Matplotlib"/></div><span class="tech-icon-name">Matplotlib</span></div>
+      <div class="tech-icon-item"><div class="tech-icon-circle"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"/></div><span class="tech-icon-name">MySQL</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience">
+  <h2 class="section-heading"><span class="accent">Professional</span> Experience</h2>
+  <div class="exp-grid">
+    <div>
+      <div class="exp-item">
+        <div class="exp-title">AI/ML Trainee</div>
+        <div class="exp-meta">ASB Academy • Jan 2026 – Present</div>
+        <ul class="exp-bullets">
+          <li>Developed and evaluated Machine Learning and Deep Learning models using Python, Scikit-Learn, and TensorFlow for real-world AI applications.</li>
+          <li>Performed data preprocessing, feature engineering, exploratory data analysis (EDA), and visualization using Pandas, NumPy, and Matplotlib.</li>
+          <li>Built, trained, tested, and optimized predictive models through hyperparameter tuning and performance evaluation techniques.</li>
+          <li>Worked on NLP and Transformer-based solutions, gaining hands-on experience with text processing and model fine-tuning.</li>
+          <li>Collaborated on end-to-end AI/ML projects and integrated models into backend applications using FastAPI, following industry-standard workflows.</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="exp-mockup">
+        <div class="mockup-bar">
+          <div class="mockup-dot" style="background:#ff5f57"></div>
+          <div class="mockup-dot" style="background:#febc2e"></div>
+          <div class="mockup-dot" style="background:#28c840"></div>
+          <div class="mockup-url">hiremind-ai-orpin.vercel.app</div>
+        </div>
+        <div class="mockup-body">
+          <div style="font-size:.7rem;color:var(--blue);font-family:var(--mono);margin-bottom:.5rem">HireMind Platform</div>
+          <div class="mockup-hero-text">Crack Interviews, Faster</div>
+          <div class="mockup-sub">AI recruitment platform for resume scoring, mock interviews, and candidate evaluation workflows.</div>
+          <div class="mockup-form">
+            <input class="mockup-input" placeholder="Upload Resume" readonly/>
+            <input class="mockup-input" placeholder="Job Role" readonly/>
+            <button class="mockup-btn">Analyze</button>
+          </div>
+          <div style="margin-top:1.5rem;display:flex;gap:.5rem;align-items:center">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center">
+              <img src="https://cdn.simpleicons.org/python/ffffff" style="width:16px;height:16px"/>
+            </div>
+            <div>
+              <div style="font-size:.75rem;font-weight:600">AI-Driven Resume Scoring</div>
+              <div style="font-size:.65rem;color:var(--muted)">Built with Python & FastAPI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ORBIT ═══ -->
+<section id="orbit">
+  <h2 class="section-heading" style="margin-bottom:3rem"><span class="accent">Empowering Innovation</span> Through Technology</h2>
+  <div class="orbit-grid">
+    <div class="orbit-wrap">
+      <div class="orbit-ring orbit-ring-1"></div>
+      <div class="orbit-ring orbit-ring-2"></div>
+      <div class="orbit-ring orbit-ring-3"></div>
+      <div class="orbit-center"><img src="https://cdn.simpleicons.org/python/ffffff" alt="Python" style="width:34px;height:34px"/></div>
+      <div class="orbit-icon oi-1"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"/></div>
+      <div class="orbit-icon oi-2"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"/></div>
+      <div class="orbit-icon oi-3"><img src="https://cdn.simpleicons.org/tensorflow/FF6F00" alt="TensorFlow"/></div>
+      <div class="orbit-icon om-1"><img src="https://cdn.simpleicons.org/huggingface/FFD21E" alt="Hugging Face"/></div>
+      <div class="orbit-icon om-2"><img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Scikit-Learn"/></div>
+      <div class="orbit-icon om-3"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="SQL"/></div>
+      <div class="orbit-icon om-4"><img src="https://cdn.simpleicons.org/django/092E20" alt="Django"/></div>
+      <div class="orbit-icon om-5"><img src="https://cdn.simpleicons.org/numpy/013243" alt="NumPy"/></div>
+      <div class="orbit-icon om-6"><img src="https://cdn.simpleicons.org/plotly/3F4F75" alt="Matplotlib"/></div>
+      <div class="orbit-icon oo-1"><img src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas"/></div>
+      <div class="orbit-icon oo-2"><img src="https://cdn.simpleicons.org/cplusplus/00599C" alt="C++"/></div>
+      <div class="orbit-icon oo-3"><img src="https://cdn.simpleicons.org/c/A8B9CC" alt="C"/></div>
+      <div class="orbit-icon oo-4"><img src="https://cdn.simpleicons.org/jupyter/F37626" alt="Jupyter"/></div>
+      <div class="orbit-icon oo-5"><img src="https://cdn.simpleicons.org/github/000000" alt="GitHub"/></div>
+      <div class="orbit-icon oo-6"><img src="https://cdn.simpleicons.org/git/F05032" alt="Git"/></div>
+      <div class="orbit-icon oo-7"><img src="https://cdn.simpleicons.org/linux/FCC624" alt="Linux"/></div>
+      <div class="orbit-icon oo-8"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JavaScript"/></div>
+    </div>
+    <div class="orbit-text">
+      <h2><span class="accent">Empowering Innovation</span> Through Technology</h2>
+      <p>Motivated BCA graduate with hands-on experience in Python, Machine Learning, and AI application development — skilled in building intelligent solutions using FastAPI, Django, Scikit-Learn, TensorFlow, Pandas, and NumPy.</p>
+      <p>I've developed projects including an AI-powered recruitment platform, a voice assistant, and an ML experiment orchestration tool, demonstrating strong problem-solving and software development abilities.</p>
+      <p style="color:var(--blue);font-weight:600">Seeking an AI/ML Engineer or Python Developer role to apply my skills, contribute to real-world AI projects, and keep learning emerging technologies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="contact-inner">
+    <h2 class="section-heading"><span class="accent">Get In</span> Touch</h2>
+    <p class="contact-sub">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
+    <div class="contact-form">
+      <form id="contact-form" action="https://formspree.io/f/mnjkqaeq" method="POST">
+        <div class="form-row">
+          <label for="c-name">Name</label>
+          <input type="text" id="c-name" name="name" placeholder="Your full name" required/>
+        </div>
+        <div class="form-row">
+          <label for="c-email">Email</label>
+          <input type="email" id="c-email" name="email" placeholder="you@example.com" required/>
+        </div>
+        <div class="form-row">
+          <label for="c-msg">Message</label>
+          <textarea id="c-msg" name="message" placeholder="Tell me about your project…" required></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="New portfolio contact from Suraj's website"/>
+        <button type="submit" class="btn-submit" id="contact-submit-btn">Send Message ✦</button>
+        <p class="form-status" id="form-status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with <span>♥</span> · <span>2026</span> · Suraj Prajapati</p>
+</footer>
+
+<script>
+// Typed.js
+new Typed('#hero-typed', {
+  strings: ["I'm an AI/ML Engineer","I'm a Data Analyst","I'm a Python Developer","I'm a Graphic Designer"],
+  typeSpeed:55, backSpeed:35, backDelay:1700, loop:true,
+});
+
+// GSAP
+gsap.registerPlugin(ScrollTrigger);
+gsap.from('.hero-left > *', {opacity:0, y:30, stagger:.12, duration:.7, ease:'power3.out', delay:.2});
+gsap.from('.code-editor',   {opacity:0, x:40,  duration:.9, ease:'power3.out', delay:.4});
+gsap.utils.toArray('.bento-card').forEach((el,i) => {
+  gsap.from(el,{opacity:0,y:40,duration:.7,delay:i*.08,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
+});
+gsap.utils.toArray('.project-card').forEach((el,i) => {
+  gsap.from(el,{opacity:0,y:50,duration:.8,delay:i*.1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 87%'}});
+});
+gsap.utils.toArray('.section-heading').forEach(el => {
+  gsap.from(el,{opacity:0,y:30,duration:.7,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}});
+});
+gsap.from('.exp-item',   {opacity:0,x:-30,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.exp-grid',start:'top 85%'}});
+gsap.from('.exp-mockup', {opacity:0,x:30, duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.exp-grid',start:'top 85%'}});
+gsap.from('.contact-form',{opacity:0,y:40,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.contact-form',start:'top 88%'}});
+
+// ── FLOATING NAV ──
+const floatNav   = document.getElementById('float-nav');
+const fnLinks    = document.querySelectorAll('.fn-link');
+const sections   = ['hero','projects','techrow','experience','contact'];
+
+function updateFloatNav() {
+  const scrollY = window.scrollY;
+  if (scrollY > 300) floatNav.classList.add('visible');
+  else floatNav.classList.remove('visible');
+  let current = 'hero';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && scrollY >= el.offsetTop - 160) current = id;
+  });
+  fnLinks.forEach(link => {
+    link.classList.toggle('fn-active', link.getAttribute('href') === '#' + current);
+  });
+}
+window.addEventListener('scroll', updateFloatNav, {passive:true});
+updateFloatNav();
+
+document.querySelectorAll('#float-nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+
+// Formspree
+const contactForm  = document.getElementById('contact-form');
+const submitBtn    = document.getElementById('contact-submit-btn');
+const formStatus   = document.getElementById('form-status');
+if (contactForm) {
+  contactForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    formStatus.textContent = '';
+    formStatus.className = 'form-status';
+    try {
+      const res = await fetch(contactForm.action, {
+        method:'POST', body:new FormData(contactForm),
+        headers:{'Accept':'application/json'}
+      });
+      if (res.ok) {
+        formStatus.textContent = "Message sent! I'll get back to you soon.";
+        formStatus.className = 'form-status success';
+        contactForm.reset();
+      } else {
+        const d = await res.json().catch(()=>null);
+        formStatus.textContent = d?.errors?.map(e=>e.message).join(', ') || 'Something went wrong. Please try again.';
+        formStatus.className = 'form-status error';
+      }
+    } catch {
+      formStatus.textContent = 'Network error. Please email me directly.';
+      formStatus.className = 'form-status error';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message ✦';
+    }
+  });
+}
+</script>
+</body>
+</html>
